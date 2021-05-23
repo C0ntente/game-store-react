@@ -4,7 +4,8 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ["plugin:react/recommended", "airbnb"],
+  parser: "babel-eslint",
+  extends: ["plugin:react/recommended", "airbnb", "prettier", "prettier/react"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -12,8 +13,9 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  plugins: ["react"],
+  plugins: ["react", "prettier"],
   rules: {
     "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
+    "prettier/prettier": "error",
   },
 };
