@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import StoreFooter from '../components/StoreFooter';
 import StoreNavBar from '../components/StoreNavBar';
+import { CartProvider } from '../contexts/CartContext';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
@@ -11,7 +12,10 @@ function MyApp({ Component, pageProps }) {
         <meta name="description" content="Game Store Adalberto" />
       </Head>
       <StoreNavBar></StoreNavBar>
-      <Component {...pageProps} />
+      <CartProvider>
+        <Component {...pageProps} />
+      </CartProvider>
+
       <StoreFooter></StoreFooter>
     </>
   );
