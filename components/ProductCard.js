@@ -1,8 +1,13 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Card, Container } from 'react-bootstrap';
+import { CartContext } from '../contexts/CartContext';
 
 export default function ProductCard({ product }) {
+  const { addProductToCart } = useContext(CartContext);
+  function handleClick() {
+    addProductToCart(product);
+  }
   function formatNumberAsCurrency(number) {
     var formatter = new Intl.NumberFormat('pt-BR', {
       style: 'currency',
@@ -37,7 +42,9 @@ export default function ProductCard({ product }) {
           <Card.Text className="text-center">
             Price: <b>{formatNumberAsCurrency(product.price)}</b>
           </Card.Text>
-          <Button variant="primary">Add to cart</Button>
+          <Button variant="primary" onClick={() => handleClick()}>
+            Add to cart
+          </Button>
         </Container>
       </Card.Body>
     </Card>
