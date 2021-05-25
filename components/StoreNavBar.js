@@ -1,5 +1,6 @@
 import { Container, Navbar } from 'react-bootstrap';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const StoreNavBar = () => (
   <Navbar className="navbar-dark bg-dark">
@@ -12,7 +13,9 @@ const StoreNavBar = () => (
           Products
         </a>
       </Container>
-      <Image src="/cart-icon.svg" alt="Cart" width={40} height={25} />
+      <Link href="cart">
+        <Image src="/cart-icon.svg" alt="Cart" width={40} height={25} />
+      </Link>
     </Container>
   </Navbar>
 );

@@ -14,9 +14,6 @@ export default function Products({ products }) {
           );
         })}
       </Row>
-      <main className={styles.main}>
-        <h1 className={styles.title}>Products</h1>
-      </main>
     </Container>
   );
 }
