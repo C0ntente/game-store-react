@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import { Button, Card, Container } from 'react-bootstrap';
+import { formatNumberAsCurrency } from '../commons/formatter';
 import { CartContext } from '../contexts/CartContext';
 
 export default function ProductCard({ product }) {
@@ -8,15 +9,7 @@ export default function ProductCard({ product }) {
   function handleClick() {
     addProductToCart(product);
   }
-  function formatNumberAsCurrency(number) {
-    var formatter = new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-    return formatter.format(number); /* $2,500.00 */
-  }
+
   return (
     <Card className="h-100">
       <Image

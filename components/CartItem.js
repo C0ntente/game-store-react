@@ -1,6 +1,4 @@
-import React from 'react';
-import { Button, Container } from 'react-bootstrap';
-
+import { formatNumberAsCurrency } from '../commons/formatter';
 export default function CartItem({ cartItem }) {
   return (
     <div className="d-flex justify-content-between">
@@ -13,7 +11,9 @@ export default function CartItem({ cartItem }) {
         <Button size="sm" className="ms-2">
           +
         </Button>
-        <span className="ms-2">{cartItem.quantity * cartItem.price}</span>
+        <span className="ms-2">
+          {formatNumberAsCurrency(cartItem.quantity * cartItem.price)}
+        </span>
       </div>
     </div>
   );
