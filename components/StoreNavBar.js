@@ -6,15 +6,17 @@ const StoreNavBar = () => (
   <Navbar className="navbar-dark bg-dark">
     <Container className="container-fluid">
       <Container className="container-fluid justify-content-start">
-        <a className="navbar-brand" href="/">
-          Game Store
-        </a>
-        <a className="navbar-brand" href="products">
-          Products
-        </a>
+        <Link href="/">
+          <a className="navbar-brand">Game Store</a>
+        </Link>
+        <Link href="/products">
+          <a className="navbar-brand">Products</a>
+        </Link>
       </Container>
-      <Link href="cart">
-        <Image src="/cart-icon.svg" alt="Cart" width={40} height={25} />
+      <Link href="/cart">
+        <a>
+          <Image src="/cart-icon.svg" alt="Cart" width={40} height={25} />
+        </a>
       </Link>
     </Container>
   </Navbar>
