@@ -1,10 +1,18 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const CartContext = createContext({});
 
 export function CartProvider(props) {
   const [cart, setCart] = useState([]);
-
+  useEffect(() => {
+    const data = localStorage.getItem('cart');
+    if (data) {
+      setCart(JSON.parse(data));
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  });
   function findWithAttr(array, attr, value) {
     for (var i = 0; i < array.length; i += 1) {
       if (array[i][attr] === value) {
