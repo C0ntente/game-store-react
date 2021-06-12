@@ -5,7 +5,7 @@ import { formatNumberAsCurrency } from '../commons/formatter';
 import CartItem from '../components/CartItem';
 import { CartContext } from '../contexts/CartContext';
 
-export default function cart() {
+function cart() {
   const { cart } = useContext(CartContext);
   function calculateCartTotal() {
     let total = 0;
@@ -13,6 +13,13 @@ export default function cart() {
       total += product.quantity * product.price;
     });
     return total;
+  }
+  function calculateShip() {
+    let shipPrice = 0;
+    cart.forEach((product) => {
+      shipPrice += product.quantity * 10;
+    });
+    return shipPrice;
   }
   if (cart.length > 0) {
     return (
@@ -27,8 +34,24 @@ export default function cart() {
           })}
         </Row>
         <Row>
-          <div className="justify-content-end d-flex">
-            <h3>Total: {formatNumberAsCurrency(calculateCartTotal())}</h3>
+          <div className="d-flex justify-content-end">
+            <div className="d-flex flex-column">
+              <h3 className="text-end">
+                Total: {formatNumberAsCurrency(calculateCartTotal())}
+              </h3>
+              <h3
+                className={
+                  calculateCartTotal() >= 250
+                    ? 'text-end text-decoration-line-through'
+                    : 'text-end'
+                }
+              >
+                Ship Price: {formatNumberAsCurrency(calculateShip())}
+              </h3>
+              {calculateCartTotal() >= 250 && (
+                <h3 className="text-end">Free Ship</h3>
+              )}
+            </div>
           </div>
         </Row>
         <Row>
@@ -42,3 +65,4 @@ export default function cart() {
     return <h1>Carrinho vazio</h1>;
   }
 }
+export default cart;
