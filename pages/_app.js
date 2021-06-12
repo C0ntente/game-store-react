@@ -11,8 +11,9 @@ function MyApp({ Component, pageProps }) {
         <title>Game Store</title>
         <meta name="description" content="Game Store Adalberto" />
       </Head>
-      <StoreNavBar></StoreNavBar>
+
       <CartProvider>
+        <StoreNavBar></StoreNavBar>
         <Component {...pageProps} />
       </CartProvider>
 
