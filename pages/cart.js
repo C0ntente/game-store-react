@@ -6,7 +6,7 @@ import CartItem from '../components/CartItem';
 import { CartContext } from '../contexts/CartContext';
 
 function cart() {
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
   function calculateCartTotal() {
     let total = 0;
     cart.forEach((product) => {
@@ -58,6 +58,11 @@ function cart() {
           <Link href="checkout">
             <Button variant="primary">Checkout</Button>
           </Link>
+        </Row>
+        <Row>
+          <Button variant="secondary" onClick={clearCart}>
+            Clear Cart
+          </Button>
         </Row>
       </Container>
     );
